@@ -1,23 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
-
+import logo from "./logo.svg";
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.min.js";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import { Route, Routes } from "react-router-dom";
+import NavigationBar from "./NavComponent";
+import LandingPage from "./Home";
+import AboutPage from "./About";
+import Login from "./Login";
+import { LoginX } from "./LoginCompo";
+import { Movie } from "./Movie";
+import DestinationPage from "./Destination";
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NavigationBar />
+
+      <Routes>
+        <Route exact path="/" element={<LandingPage />} />
+        <Route exact path="/Capstone" element={<LandingPage />} />
+        <Route exact path="/about" element={<AboutPage />} />
+        <Route exact path="/login" element={<Login />} />
+        <Route exact path="/Camiguin" element={<DestinationPage />} />
+        <Route exact path="/Davao" element={<DestinationPage />} />
+        <Route exact path="/Siargao/Surigao" element={<DestinationPage />} />
+        <Route
+          exact
+          path="/Zamboanga-Peninsula"
+          element={<DestinationPage />}
+        />
+      </Routes>
     </div>
   );
 }
