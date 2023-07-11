@@ -1,19 +1,25 @@
 import { Carousel, Image } from "react-bootstrap";
 import camiguin1 from "./Images/camiguin1.png";
+import { Link, useParams } from "react-router-dom";
 
 const DestinationPage = () => {
+  const { id } = useParams();
+
+  const destinationx = require("./destinations.json");
+  const x = destinationx.find((destination) => destination["Location"] == id);
+
   return (
     <div className="container">
       <div className="destination-info text-center">
-        <h1 className="title">Destination Title</h1>
-        <h5>One Liner</h5>
+        <h1 className="title">{x.Tittle}</h1>
+        <h5>{x["One-liner"]}</h5>
       </div>
-      <h4 className="place mt-5 mb-2">Name of Location</h4>
+      <h4 className="place mt-5 mb-2">{x.Location}</h4>
       <Carousel>
         <Carousel.Item>
           <Image
             className="d-block w-100 mt-5 mb-5"
-            src={camiguin1}
+            src={process.env.PUBLIC_URL + x.Image1}
             alt="carousel image1"
             placeholder="camiguin spots"
           />
@@ -21,7 +27,7 @@ const DestinationPage = () => {
         <Carousel.Item>
           <Image
             className="d-block w-100 mt-5 mb-5"
-            src={"#"}
+            src={process.env.PUBLIC_URL + x.Image2}
             alt="Carousel Image 2"
             placeholder="images"
           />
@@ -30,15 +36,10 @@ const DestinationPage = () => {
       </Carousel>
 
       <div className="destination-info text-center">
-        <p className="description">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere, eius
-          nam modi veniam accusantium expedita dolorum? Animi distinctio
-          consequuntur, voluptates sunt dolorem ea esse incidunt aperiam
-          accusamus fuga aliquid reprehenderit?
-        </p>
-        <p className="location">Location: City, Country</p>
-        <p className="rating">Rating: 4.5/5</p>
-        <div className="price">PHP ***</div>
+        <p className="description">{x.Description}</p>
+        <p className="location">{x.Location}</p>
+        <p className="rating">{x.Rating}</p>
+        <div className="price">{x.Price}</div>
       </div>
 
       <div className="text-end">
