@@ -1,13 +1,26 @@
+import { useState } from "react";
 import "./Booking.css";
+import { Link, useParams } from "react-router-dom";
+import { auth } from "./config/firebase";
 
 const Booking = () => {
+  const { id } = useParams();
+  const destinationx = require("./destinations.json");
+  const desx = destinationx.find((des) => des.Location == id);
+  const [billout, setBillout] = useState(desx.Price1);
+  const billchange = (event) => {
+    setBillout(event.target.value);
+  };
   return (
     <div className="booking">
       <div className="container d-lg-flex">
-        <div className="box-1 bg-light user mt-5">
+        <div className="box-1 bg-light user">
           <div className="box-inner-1 pb-3 mb-3">
             <div className="d-flex justify-content-between mb-3 userdetails">
               <p className="fw-bold">Final Step: Enjoy Your Destination!</p>
+            </div>
+            <div className="d-flex justify-content-between mb-3 userdetails">
+              <p className="fw-bold">{id}</p>
             </div>
             <div
               id="my"
@@ -40,19 +53,19 @@ const Booking = () => {
               <div className="carousel-inner">
                 <div className="carousel-item active">
                   <img
-                    src="./assets/images/bukidnon_kaamulan2.jpg"
+                    src={process.env.PUBLIC_URL + desx.Image2}
                     className="d-block w-100"
                   />
                 </div>
                 <div className="carousel-item">
                   <img
-                    src="./assets/images/bukidnon_kaamulan3.png"
+                    src={process.env.PUBLIC_URL + desx.Image3}
                     className="d-block w-100 h-100"
                   />
                 </div>
                 <div className="carousel-item">
                   <img
-                    src="./assets/images/bukidnon_kaamulan4.jpg"
+                    src={process.env.PUBLIC_URL + desx.Image4}
                     className="d-block w-100"
                   />
                 </div>
@@ -81,21 +94,37 @@ const Booking = () => {
                 <span className="visually-hidden">Next</span>
               </button>
             </div>
-            <p className="dis info my-3">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Cupiditate quos ipsa sed officiis odio
-            </p>
+            <p className="dis info my-3">{desx.Description}</p>
             <div className="radiobtn">
-              <input type="radio" name="box" id="one" />
-              <input type="radio" name="box" id="two" />
-              <input type="radio" name="box" id="three" />
+              <input
+                type="radio"
+                name="box"
+                id="one"
+                value={desx.Price1}
+                onClick={billchange}
+                checked
+              />
+              <input
+                type="radio"
+                name="box"
+                id="two"
+                value={desx.Price2}
+                onClick={billchange}
+              />
+              <input
+                type="radio"
+                name="box"
+                id="three"
+                value={desx.Price3}
+                onClick={billchange}
+              />
               <label for="one" className="box py-2 first">
                 <div className="d-flex align-items-start">
                   <span className="circle"></span>
                   <div className="course">
                     <div className="d-flex align-items-center justify-content-between mb-2">
                       <span className="fw-bold"> Promo 1 </span>
-                      <span className="fas fa-peso-sign">2,000</span>
+                      <span className="fas fa-peso-sign">{desx.Price1}</span>
                     </div>
                     <span>2Days | 1Night | 3Adults | 2Children</span>
                   </div>
@@ -107,7 +136,7 @@ const Booking = () => {
                   <div className="course">
                     <div className="d-flex align-items-center justify-content-between mb-2">
                       <span className="fw-bold"> Promo 2 </span>
-                      <span className="fas fa-peso-sign">2500</span>
+                      <span className="fas fa-peso-sign">{desx.Price2}</span>
                     </div>
                     <span>2Days | 1Night | 5Adults | 3Children</span>
                   </div>
@@ -119,7 +148,7 @@ const Booking = () => {
                   <div className="course">
                     <div className="d-flex align-items-center justify-content-between mb-2">
                       <span className="fw-bold"> Promo 3 </span>
-                      <span className="fas fa-peso-sign">3500</span>
+                      <span className="fas fa-peso-sign">{desx.Price3}</span>
                     </div>
                     <span>2Days | 1Night | 8Adults | 5Children</span>
                   </div>
@@ -142,7 +171,8 @@ const Booking = () => {
                 <input
                   className="form-control"
                   type="email"
-                  value="luke@skywalker.com"
+                  value={auth.currentUser.email}
+                  disabled
                 />
               </div>
               <div>
@@ -211,26 +241,24 @@ const Booking = () => {
                   <div className="d-flex flex-column dis">
                     <div className="d-flex align-items-center justify-content-between mb-2">
                       <p>Subtotal</p>
-                      <p>
-                        <span className="fas fa-peso-sign"></span>33.00
-                      </p>
+                      <p>₱{Number(billout.replace(/[^0-9\.-]+/g, ""))}</p>
                     </div>
                     <div className="d-flex align-items-center justify-content-between mb-2">
                       <p>
                         VAT<span>(20%)</span>
                       </p>
-                      <p>
-                        <span className="fas fa-peso-sign"></span>2.80
-                      </p>
+                      <p>₱{Number(billout.replace(/[^0-9\.-]+/g, "")) * 0.2}</p>
                     </div>
                     <div className="d-flex align-items-center justify-content-between mb-2">
                       <p className="fw-bold">Total</p>
                       <p className="fw-bold">
-                        <span className="fas fa-peso-sign"></span>35.80
+                        <p>
+                          ₱{Number(billout.replace(/[^0-9\.-]+/g, "")) * 1.2}
+                        </p>
                       </p>
                     </div>
                     <div className="btn btn-primary mt-2">
-                      Pay<span className="fas fa-peso-sign px-1"></span>35.80
+                      Pay ₱{Number(billout.replace(/[^0-9\.-]+/g, "")) * 1.2}
                     </div>
                   </div>
                 </div>

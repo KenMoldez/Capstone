@@ -35,55 +35,53 @@ function Login() {
   };
 
   return (
-    <section className={LoginCSS["portal"]}>
-      <form>
-        <div className={LoginCSS["title"]}>
-          <h1>LOG IN</h1>
-          <p>Welcome back! Please enter your details.</p>
-        </div>
-        <button id={LoginCSS["google-signin"]} onClick={signInWithGoogle}>
-          <img src="assets/google-logo.svg" alt="" />
-          Log in with Google
-        </button>
-        <span className={LoginCSS["or"]}>or</span>
-        <div className={LoginCSS["input-field"]}>
-          <input
-            type="email"
-            id="email"
-            placeholder=""
-            name="email"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <p htmlFor="email">Email</p>
-        </div>
-        <div className={LoginCSS["input-field"]}>
-          <input
-            type="password"
-            id="password"
-            placeholder=""
-            name="password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <p htmlFor="password">Password</p>
+    <form>
+      <div className={LoginCSS["title"]}>
+        <h1>LOG IN</h1>
+        <p>Welcome back! Please enter your details.</p>
+      </div>
+      <button id={LoginCSS["google-signin"]} onClick={signInWithGoogle}>
+        <img src="assets/google-logo.svg" alt="" />
+        Log in with Google
+      </button>
+      <span className={LoginCSS["or"]}>or</span>
+      <div className={LoginCSS["input-field"]}>
+        <input
+          type="email"
+          id="email"
+          placeholder=""
+          name="email"
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <p htmlFor="email">Email</p>
+      </div>
+      <div className={LoginCSS["input-field"]}>
+        <input
+          type="password"
+          id="password"
+          placeholder=""
+          name="password"
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <p htmlFor="password">Password</p>
 
-          <label htmlFor="hide-show" id={LoginCSS["show-hide-pass"]}></label>
+        <label htmlFor="hide-show" id={LoginCSS["show-hide-pass"]}></label>
 
-          <input
-            type="checkbox"
-            name="showPass"
-            id="hide-show"
-            className={LoginCSS["hide-show"]}
-          />
-        </div>
+        <input
+          type="checkbox"
+          name="showPass"
+          id="hide-show"
+          className={LoginCSS["hide-show"]}
+        />
+      </div>
 
-        <p className={LoginCSS["userLoginErrorMessage"]}></p>
+      <p className={LoginCSS["userLoginErrorMessage"]}></p>
 
-        <button id={LoginCSS["signin"]} onClick={signIn}>
-          Sign in
-        </button>
-        <button onClick={signIn}>HUY</button>
-      </form>
-    </section>
+      <button id={LoginCSS["signin"]} onClick={signIn}>
+        Sign in
+      </button>
+      <button onClick={signIn}>HUY</button>
+    </form>
   );
 }
 

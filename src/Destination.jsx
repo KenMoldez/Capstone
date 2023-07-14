@@ -4,7 +4,11 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import "./destination.css";
+import { Link } from "react-router-dom";
+import { auth } from "./config/firebase";
+
 function DestinationPage() {
+  const cities = require("./city.json");
   return (
     <div className="destination-container">
       <div className="destination-content">
@@ -22,90 +26,27 @@ function DestinationPage() {
         lg={3}
         className="g-4 justify-content-center destination-row"
       >
-        <Col>
-          <Card>
-            <Card.Img variant="top" src="holder.js/100px160" />
-            <Card.Body>
-              <Card.Title>Card title</Card.Title>
-              <Card.Text>
-                This is a longer card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
-              </Card.Text>
-              <Button variant="primary">Check Destination</Button>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col>
-          <Card>
-            <Card.Img variant="top" src="holder.js/100px160" />
-            <Card.Body>
-              <Card.Title>Card title</Card.Title>
-              <Card.Text>
-                This is a longer card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
-              </Card.Text>
-              <Button variant="primary">Check Destination</Button>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col>
-          <Card>
-            <Card.Img variant="top" src="holder.js/100px160" />
-            <Card.Body>
-              <Card.Title>Card title</Card.Title>
-              <Card.Text>
-                This is a longer card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
-              </Card.Text>
-              <Button variant="primary">Check Destination</Button>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col>
-          <Card>
-            <Card.Img variant="top" src="holder.js/100px160" />
-            <Card.Body>
-              <Card.Title>Card title</Card.Title>
-              <Card.Text>
-                This is a longer card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
-              </Card.Text>
-              <Button variant="primary">Check Destination</Button>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col>
-          <Card>
-            <Card.Img variant="top" src="holder.js/100px160" />
-            <Card.Body>
-              <Card.Title>Card title</Card.Title>
-              <Card.Text>
-                This is a longer card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
-              </Card.Text>
-              <Button variant="primary">Check Destination</Button>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col>
-          <Card>
-            <Card.Img variant="top" src="holder.js/100px160" />
-            <Card.Body>
-              <Card.Title>Card title</Card.Title>
-              <Card.Text>
-                This is a longer card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
-              </Card.Text>
-              <Button variant="primary">Check Destination</Button>
-            </Card.Body>
-          </Card>
-        </Col>
+        {cities.map((city) => (
+          <Col>
+            <Card>
+              <Card.Img
+                variant="top"
+                src={process.env.PUBLIC_URL + city["City Image"]}
+              />
+              <Card.Body>
+                <Card.Title>{city["City Title"]}</Card.Title>
+                <Card.Text>{city["City Description"]}</Card.Text>
+                <Link
+                  className="link"
+                  to={"/destinations/" + city["City Title"]}
+                >
+                  <Button variant="primary">Check Destination</Button>
+                </Link>
+              </Card.Body>
+            </Card>{" "}
+          </Col>
+        ))}
+
         {/* test */}
         <Card className="destination-card">
           <div className="destination-image">

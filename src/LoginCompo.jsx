@@ -6,6 +6,7 @@ import {
   signOut,
 } from "firebase/auth";
 import { useState, useEffect } from "react";
+import { Button, Card } from "react-bootstrap";
 
 export const LoginX = () => {
   const [email, setEmail] = useState("");
@@ -13,8 +14,8 @@ export const LoginX = () => {
   const [emailz, setEmailz] = useState("");
   const [passwordz, setPasswordz] = useState("");
   const [count, setCount] = useState(0);
-  const [errmy, setErrmy] = useState("hello");
-  const [errmz, setErrmz] = useState("goodbye");
+  const [errmy, setErrmy] = useState("");
+  const [errmz, setErrmz] = useState("");
 
   const createAccount = async () => {
     try {
@@ -66,35 +67,41 @@ export const LoginX = () => {
         <button onClick={logout}> Logout </button>
       ) : (
         <div>
-          <div>
-            <input
-              placeholder="Email..."
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <input
-              placeholder="Password..."
-              type="password"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <button onClick={createAccount}>Create Account</button>
-            {errmy}
-          </div>
-          <div>
-            <input
-              placeholder="Email..."
-              onChange={(e) => setEmailz(e.target.value)}
-            />
-            <input
-              placeholder="Password..."
-              type="password"
-              onChange={(e) => setPasswordz(e.target.value)}
-            />
-            <button onClick={signIn}>Sign In</button>
-            {errmz}
-          </div>
-          <div>
-            <button onClick={signInWithGoogle}> Sign In With Google</button>
-          </div>
+          <Card>
+            <div>
+              <input
+                placeholder="Email..."
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <input
+                placeholder="Password..."
+                type="password"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <button onClick={createAccount}>Create Account</button>
+              {errmy}
+            </div>
+          </Card>
+          <Card>
+            <div>
+              <input
+                placeholder="Email..."
+                onChange={(e) => setEmailz(e.target.value)}
+              />
+              <input
+                placeholder="Password..."
+                type="password"
+                onChange={(e) => setPasswordz(e.target.value)}
+              />
+              <button onClick={signIn}>Sign In</button>
+              {errmz}
+            </div>
+          </Card>
+          <Card>
+            <div>
+              <Button onClick={signInWithGoogle}> Sign In With Google</Button>
+            </div>
+          </Card>
         </div>
       )}
       <br />

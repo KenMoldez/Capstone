@@ -14,6 +14,7 @@ import { Movie } from "./Movie";
 import DestinationPage from "./Destination";
 import TEST from "./TEST";
 import Booking from "./Booking";
+import CityDestination from "./CityDestination";
 function App() {
   return (
     <div className="App">
@@ -23,12 +24,20 @@ function App() {
         <Route exact path="/" element={<LandingPage />} />
         <Route exact path="/Capstone" element={<LandingPage />} />
         <Route exact path="/about" element={<AboutPage />} />
-        <Route exact path="/login" element={<Login />} />
-        <Route path="/destinations/:id" element={<DestinationPage />} />
+        <Route
+          exact
+          path="/login"
+          element={
+            <>
+              <LoginX />
+            </>
+          }
+        />
+        <Route exact path="/destinations/" element={<DestinationPage />} />
+        <Route path="/destinations/:id" element={<CityDestination />} />
+
         <Route path="/booking/:id" element={<Booking />} />
-        <Route exact path="/Camiguin" element={<DestinationPage />} />
-        <Route exact path="/Davao" element={<DestinationPage />} />
-        <Route exact path="/Siargao/Surigao" element={<DestinationPage />} />
+
         <Route
           exact
           path="/Zamboanga-Peninsula"

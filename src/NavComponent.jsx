@@ -36,7 +36,7 @@ const NavigationBar = () => {
                   </Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
-                  <Nav className="justify-content-end flex-grow-1 pe-3">
+                  <Nav className="justify-content-around flex-grow-1 pe-3">
                     <Nav.Link>
                       <Link className="link" to="/">
                         Home
@@ -47,39 +47,11 @@ const NavigationBar = () => {
                         About
                       </Link>
                     </Nav.Link>
-                    <NavDropdown
-                      title="Destinations"
-                      id={`offcanvasNavbarDropdown-expand-${expand}`}
-                    >
-                      <NavDropdown.Item>
-                        <Nav.Link>
-                          <Link className="link" to="/Camiguin">
-                            Camiguin
-                          </Link>
-                        </Nav.Link>
-                      </NavDropdown.Item>
-                      <NavDropdown.Item>
-                        <Nav.Link>
-                          <Link className="link" to="/Davao">
-                            Davao
-                          </Link>
-                        </Nav.Link>
-                      </NavDropdown.Item>
-                      <NavDropdown.Item>
-                        <Nav.Link>
-                          <Link className="link" to="/Siargao-Surigao">
-                            Siargao/Surigao
-                          </Link>
-                        </Nav.Link>
-                      </NavDropdown.Item>
-                      <NavDropdown.Item>
-                        <Nav.Link>
-                          <Link className="link" to="/Zamboanga-Peninsula">
-                            Zamboanga Peninsula
-                          </Link>
-                        </Nav.Link>
-                      </NavDropdown.Item>
-                    </NavDropdown>
+                    <Nav.Link>
+                      <Link className="link" to="/destinations">
+                        Destinations
+                      </Link>
+                    </Nav.Link>
                   </Nav>
                   <Nav>
                     <Nav.Link>
@@ -88,15 +60,6 @@ const NavigationBar = () => {
                       </Link>
                     </Nav.Link>
                   </Nav>
-                  <Form className="d-flex">
-                    <Form.Control
-                      type="search"
-                      placeholder="Search"
-                      className="me-2"
-                      aria-label="Search"
-                    />
-                    <Button variant="outline-success">Search</Button>
-                  </Form>
                 </Offcanvas.Body>
               </Navbar.Offcanvas>
             </Container>
