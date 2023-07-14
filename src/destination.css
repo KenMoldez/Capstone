@@ -1,0 +1,56 @@
+.destination-row {
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+.destination-card {
+  padding: 250px;
+  height: 100%;
+}
+
+.destination-container {
+  text-align: center;
+}
+
+.destination-content {
+  margin-bottom: 30px;
+}
+
+/* test */
+
+.destination-card {
+  display: flex;
+  align-items: center;
+}
+
+.destination-image {
+  flex: 0 0 auto;
+  margin-right: 20px;
+}
+
+.destination-image img {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+}
+
+.destination-details {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.destination-description {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.destination-price {
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.book-now-button {
+  align-self: flex-end;
+  width: 120px;
+}

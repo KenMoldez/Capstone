@@ -21,7 +21,7 @@ const NavigationBar = () => {
             className="bg-body-tertiary mb-3"
           >
             <Container fluid>
-              <Navbar.Brand>Navbar Offcanvas</Navbar.Brand>
+              <Navbar.Brand>LAKBAY - TIKANG</Navbar.Brand>
               <Navbar.Toggle
                 aria-controls={`offcanvasNavbar-expand-${expand}`}
               />

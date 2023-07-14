@@ -1,52 +1,127 @@
-import { Carousel, Image } from "react-bootstrap";
-import camiguin1 from "./Images/camiguin1.png";
-import { Link, useParams } from "react-router-dom";
-
-const DestinationPage = () => {
-  const { id } = useParams();
-
-  const destinationx = require("./destinations.json");
-  const x = destinationx.find((destination) => destination["Location"] == id);
-
+import React from "react";
+import Card from "react-bootstrap/Card";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import Button from "react-bootstrap/Button";
+import "./destination.css";
+function DestinationPage() {
   return (
-    <div className="container">
-      <div className="destination-info text-center">
-        <h1 className="title">{x.Tittle}</h1>
-        <h5>{x["One-liner"]}</h5>
+    <div className="destination-container">
+      <div className="destination-content">
+        <p className="section-subtitle">CHECK IT NOW!</p>
+        <h2 className="h2 section-title">AVAILABLE DESTINATIONS</h2>
+        <p className="section-text">
+          Fusce hic augue velit wisi quibusdam pariatur, iusto primis, nec nemo,
+          rutrum. Vestibulum cumque laudantium. Sit ornare mollitia tenetur,
+          aptent.
+        </p>
       </div>
-      <h4 className="place mt-5 mb-2">{x.Location}</h4>
-      <Carousel>
-        <Carousel.Item>
-          <Image
-            className="d-block w-100 mt-5 mb-5"
-            src={process.env.PUBLIC_URL + x.Image1}
-            alt="carousel image1"
-            placeholder="camiguin spots"
-          />
-        </Carousel.Item>
-        <Carousel.Item>
-          <Image
-            className="d-block w-100 mt-5 mb-5"
-            src={process.env.PUBLIC_URL + x.Image2}
-            alt="Carousel Image 2"
-            placeholder="images"
-          />
-        </Carousel.Item>
-        {/* Add more carousel items as needed */}
-      </Carousel>
-
-      <div className="destination-info text-center">
-        <p className="description">{x.Description}</p>
-        <p className="location">{x.Location}</p>
-        <p className="rating">{x.Rating}</p>
-        <div className="price">{x.Price}</div>
-      </div>
-
-      <div className="text-end">
-        <button className="btn btn-primary">Book Now</button>
-      </div>
+      <Row
+        xs={1}
+        md={2}
+        lg={3}
+        className="g-4 justify-content-center destination-row"
+      >
+        <Col>
+          <Card>
+            <Card.Img variant="top" src="holder.js/100px160" />
+            <Card.Body>
+              <Card.Title>Card title</Card.Title>
+              <Card.Text>
+                This is a longer card with supporting text below as a natural
+                lead-in to additional content. This content is a little bit
+                longer.
+              </Card.Text>
+              <Button variant="primary">Check Destination</Button>
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col>
+          <Card>
+            <Card.Img variant="top" src="holder.js/100px160" />
+            <Card.Body>
+              <Card.Title>Card title</Card.Title>
+              <Card.Text>
+                This is a longer card with supporting text below as a natural
+                lead-in to additional content. This content is a little bit
+                longer.
+              </Card.Text>
+              <Button variant="primary">Check Destination</Button>
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col>
+          <Card>
+            <Card.Img variant="top" src="holder.js/100px160" />
+            <Card.Body>
+              <Card.Title>Card title</Card.Title>
+              <Card.Text>
+                This is a longer card with supporting text below as a natural
+                lead-in to additional content. This content is a little bit
+                longer.
+              </Card.Text>
+              <Button variant="primary">Check Destination</Button>
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col>
+          <Card>
+            <Card.Img variant="top" src="holder.js/100px160" />
+            <Card.Body>
+              <Card.Title>Card title</Card.Title>
+              <Card.Text>
+                This is a longer card with supporting text below as a natural
+                lead-in to additional content. This content is a little bit
+                longer.
+              </Card.Text>
+              <Button variant="primary">Check Destination</Button>
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col>
+          <Card>
+            <Card.Img variant="top" src="holder.js/100px160" />
+            <Card.Body>
+              <Card.Title>Card title</Card.Title>
+              <Card.Text>
+                This is a longer card with supporting text below as a natural
+                lead-in to additional content. This content is a little bit
+                longer.
+              </Card.Text>
+              <Button variant="primary">Check Destination</Button>
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col>
+          <Card>
+            <Card.Img variant="top" src="holder.js/100px160" />
+            <Card.Body>
+              <Card.Title>Card title</Card.Title>
+              <Card.Text>
+                This is a longer card with supporting text below as a natural
+                lead-in to additional content. This content is a little bit
+                longer.
+              </Card.Text>
+              <Button variant="primary">Check Destination</Button>
+            </Card.Body>
+          </Card>
+        </Col>
+        {/* test */}
+        <Card className="destination-card">
+          <div className="destination-image">
+            <img src={"#"} alt="Destination" />
+          </div>
+          <div className="destination-info">
+            <div className="destination-description">{"description"}</div>
+            <div className="destination-price">{"price"}</div>
+            <Button variant="primary" className="book-now-button">
+              Book Now
+            </Button>
+          </div>
+        </Card>
+      </Row>
     </div>
   );
-};
+}
 
 export default DestinationPage;

@@ -1,23 +1,31 @@
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container } from "react-bootstrap";
+import "./home.css";
 
 const LandingPage = () => {
   return (
-    <Container fluid>
-      <Row className="landing-page">
-        <Col md={6} className="landing-page__content">
-          <h1>Explore Mindanao</h1>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae
-            semper dolor. Fusce tincidunt, erat sed bibendum interdum, ligula
-            erat congue lacus, ac pulvinar enim justo et ligula.
-          </p>
-          <Button variant="primary">Get Started</Button>
-        </Col>
-        <Col md={6} className="landing-page__image">
-          <img src="your-image-url" alt="Landing Page" />
-        </Col>
-      </Row>
-    </Container>
+    <section
+      className="hero"
+      id="home"
+      // style={{
+      //   backgroundImage: `url("https://via.placeholder.com/500")`,
+      // }}
+    >
+      <Container>
+        <h2 className="h1 hero-title">Journey to explore Mindanao</h2>
+
+        <p className="hero-text">
+          Ac mi duis mollis. Sapiente? Scelerisque quae, penatibus? Suscipit
+          class corporis nostra rem quos voluptatibus habitant? Fames, vivamus
+          minim nemo enim, gravida lobortis quasi, eum.
+        </p>
+
+        <div className="btn-group">
+          <button className="btn btn-primary">Learn more</button>
+
+          <button className="btn btn-secondary">Book now</button>
+        </div>
+      </Container>
+    </section>
   );
 };
 
