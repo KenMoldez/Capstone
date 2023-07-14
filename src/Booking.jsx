@@ -102,7 +102,6 @@ const Booking = () => {
                 id="one"
                 value={desx.Price1}
                 onClick={billchange}
-                checked
               />
               <input
                 type="radio"
