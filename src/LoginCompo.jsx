@@ -1,12 +1,13 @@
-import { auth, googleProvider } from "./config/firebase";
+import { useState, useEffect } from "react";
+import { Button, Card, Form } from "react-bootstrap";
 import {
   createUserWithEmailAndPassword,
   signInWithPopup,
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
-import { useState, useEffect } from "react";
-import { Button, Card } from "react-bootstrap";
+import { auth, googleProvider } from "./config/firebase";
+import "./Login.module.css"; // Import the CSS file for LoginX
 
 export const LoginX = () => {
   const [email, setEmail] = useState("");
@@ -23,7 +24,7 @@ export const LoginX = () => {
       setCount(count + 1);
     } catch (err) {
       console.error(err);
-      setErrmy("invalid or used email");
+      setErrmy("Invalid or used email");
     }
   };
 
@@ -42,7 +43,7 @@ export const LoginX = () => {
       setCount(count + 1);
     } catch (err) {
       console.error(err);
-      setErrmz("not logged in or invalid password");
+      setErrmz("Not logged in or invalid password");
     }
   };
 
@@ -62,49 +63,85 @@ export const LoginX = () => {
   }, [count]);
 
   return (
-    <div>
+    <div className="form-bg">
       {auth.currentUser ? (
-        <button onClick={logout}> Logout </button>
+        <Button variant="primary" onClick={logout}>
+          Logout
+        </Button>
       ) : (
-        <div>
+        <div className="container">
           <Card>
-            <div>
-              <input
-                placeholder="Email..."
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <input
-                placeholder="Password..."
-                type="password"
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <button onClick={createAccount}>Create Account</button>
-              {errmy}
+            <div className="form-container">
+              <div className="left-content">
+                <h3 className="title">Site Name</h3>
+                <h4 className="sub-title">Lorem ipsum dolor sit amet.</h4>
+              </div>
+              <div className="right-content">
+                <h3 className="form-title">Login</h3>
+                <Form>
+                  <Form.Group className="mb-3" controlId="email">
+                    <Form.Control
+                      type="email"
+                      placeholder="Email..."
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                  </Form.Group>
+                  <Form.Group className="mb-3" controlId="password">
+                    <Form.Control
+                      type="password"
+                      placeholder="Password..."
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
+                  </Form.Group>
+                  <Button variant="primary" onClick={createAccount}>
+                    Create Account
+                  </Button>
+                  <div className="error-message">{errmy}</div>
+                </Form>
+              </div>
             </div>
           </Card>
           <Card>
-            <div>
-              <input
-                placeholder="Email..."
-                onChange={(e) => setEmailz(e.target.value)}
-              />
-              <input
-                placeholder="Password..."
-                type="password"
-                onChange={(e) => setPasswordz(e.target.value)}
-              />
-              <button onClick={signIn}>Sign In</button>
-              {errmz}
+            <div className="form-container">
+              <div className="left-content">
+                <h3 className="title">Site Name</h3>
+                <h4 className="sub-title">Lorem ipsum dolor sit amet.</h4>
+              </div>
+              <div className="right-content">
+                <h3 className="form-title">Login</h3>
+                <Form>
+                  <Form.Group className="mb-3" controlId="emailz">
+                    <Form.Control
+                      type="email"
+                      placeholder="Email..."
+                      onChange={(e) => setEmailz(e.target.value)}
+                    />
+                  </Form.Group>
+                  <Form.Group className="mb-3" controlId="passwordz">
+                    <Form.Control
+                      type="password"
+                      placeholder="Password..."
+                      onChange={(e) => setPasswordz(e.target.value)}
+                    />
+                  </Form.Group>
+                  <Button variant="primary" onClick={signIn}>
+                    Sign In
+                  </Button>
+                  <div className="error-message">{errmz}</div>
+                </Form>
+              </div>
             </div>
           </Card>
           <Card>
-            <div>
-              <Button onClick={signInWithGoogle}> Sign In With Google</Button>
+            <div className="form-container">
+              <h3 className="form-title">Login</h3>
+              <Button variant="primary" onClick={signInWithGoogle}>
+                Sign In With Google
+              </Button>
             </div>
           </Card>
         </div>
       )}
-      <br />
     </div>
   );
 };

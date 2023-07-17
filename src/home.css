@@ -1,8 +1,4 @@
 :root {
-  /**
-     * colors
-     */
-
   --united-nations-blue: hsl(214, 56%, 58%);
   --bright-navy-blue: darkblue;
   --spanish-gray: hsl(0, 0%, 60%);
@@ -17,109 +13,15 @@
   --black: hsl(0, 0%, 0%);
   --onyx: hsl(0, 0%, 25%);
   --jet: hsl(0, 0%, 20%);
-
-  /**
-     * typography
-     */
-
-  --ff-poppins: "Poppins", sans-serif;
-  --ff-montserrat: "Montserrat", sans-serif;
-
-  --fs-1: calc(20px + 3.5vw);
-  --fs-2: calc(18px + 1.6vw);
-  --fs-3: calc(16px + 0.45vw);
-  --fs-4: 15px;
-  --fs-5: 14px;
-  --fs-6: 13px;
-  --fs-7: 12px;
-  --fs-8: 11px;
-
-  --fw-500: 500;
-  --fw-600: 600;
-  --fw-700: 700;
-  --fw-800: 800;
-
-  /**
-     * transition
-     */
-
-  --transition: 0.25s ease-in-out;
-
-  /**
-     * spacing
-     */
-
-  --section-padding: 60px;
-
-  /**
-     * border-radius
-     */
-
-  --radius-15: 15px;
-  --radius-25: 25px;
-}
-
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-li {
-  list-style: none;
-}
-
-a {
-  text-decoration: none;
-}
-
-a,
-img,
-span,
-input,
-label,
-button,
-ion-icon {
-  display: block;
-}
-
-input,
-button {
-  background: none;
-  border: none;
-  font: inherit;
-}
-
-button {
-  cursor: pointer;
-}
-
-input {
-  width: 100%;
-}
-
-ion-icon {
-  pointer-events: none;
-}
-
-html {
-  font-family: var(--ff-poppins);
-  scroll-behavior: smooth;
-}
-
-.container {
-  padding-inline: 15px;
 }
 
 .btn {
   color: var(--white);
   text-transform: uppercase;
-  font-size: var(--fs-5);
+  font-size: var(--fs-4);
   border-radius: 100px;
-  padding: var(--padding, 8px 18px);
-  border: var(--border-width, 2px) solid transparent;
+  padding: 12px 24px;
+  border: 2px solid transparent;
   transition: var(--transition);
 }
 
@@ -129,7 +31,7 @@ html {
 }
 
 .btn-primary:is(:hover, :focus) {
-  background: rgb(177, 154, 21);
+  opacity: 1;
   color: var(--bright-navy-blue);
 }
 
@@ -138,7 +40,7 @@ html {
 }
 
 .btn-secondary:is(:hover, :focus) {
-  background: rgb(177, 154, 21);
+  opacity: 1;
   color: var(--bright-navy-blue);
 }
 
@@ -150,25 +52,6 @@ html {
   text-transform: uppercase;
 }
 
-.h1 {
-  color: var(--white);
-  font-size: var(--fs-1);
-}
-
-.h2,
-.h3 {
-  color: var(--gunmetal);
-}
-
-.h2 {
-  font-size: var(--fs-2);
-}
-
-.h3 {
-  font-size: var(--fs-3);
-  font-weight: var(--fw-700);
-}
-
 .section-subtitle {
   color: var(--bright-navy-blue);
   font-size: var(--fs-5);
@@ -177,29 +60,12 @@ html {
   margin-bottom: 8px;
 }
 
-.section-title {
-  margin-bottom: 15px;
-}
-
 .section-text {
   color: var(--black-coral);
   margin-bottom: 30px;
 }
 
-.card-text {
-  color: var(--black-coral);
-  font-size: var(--fs-5);
-}
-
 .hero {
-  /* src={process.env.PUBLIC_URL + x.Image1} */
-  background-image: url("https://res.cloudinary.com/dgtupimcv/image/upload/v1689321691/siargao_naked_island2_a8asj4.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  background-color: hsla(0, 0%, 0%, 0.7);
-  background-blend-mode: overlay;
-  display: grid;
   place-items: center;
   min-height: 600px;
   text-align: center;
@@ -208,18 +74,61 @@ html {
 
 .hero-title {
   margin-bottom: 20px;
+  color: var(--black);
 }
 
 .hero-text {
-  color: var(--white);
-  font-size: var(--fs-5);
+  color: var(--black);
+  font-size: var(--fs-3);
   margin-bottom: 40px;
 }
 
-.btn-group {
+.destination-row {
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+.destination-col {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
+}
+
+.destination-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+.destination-card .card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.destination-card .card-title {
+  margin-bottom: 10px;
+}
+
+.destination-card .card-text {
+  flex-grow: 1;
+  margin-bottom: 10px;
+}
+
+.destination-container {
+  text-align: center;
+  margin-top: 100px;
+}
+
+.destination-content {
+  margin-bottom: 30px;
+}
+
+.destination-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-rows: auto;
+  gap: 20px;
+  margin-top: 20px;
 }

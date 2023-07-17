@@ -1,0 +1,17 @@
+[
+  {
+    "City Title": "Camiguin",
+    "City Description": "A small island that enchants visitors with its natural wonders including volcanoes, waterfalls, hot springs, and pristine beaches.",
+    "City Image": "/Images/camiguin_white_island3.jpg"
+  },
+  {
+    "City Title": "Surigao",
+    "City Description": "A coastal city with mesmerizing islands, turquoise waters, and opportunities for adventure, including surfing and island hopping",
+    "City Image": "/Images/surigao_enchanted_river2.jpg"
+  },
+  {
+    "City Title": "Davao",
+    "City Description": "A vibrant city that blends modernity with natural wonders, offering visitors a rich cultural experience and access to nearby attractions.",
+    "City Image": "/Images/davao_samal_island2.jpg"
+  }
+]

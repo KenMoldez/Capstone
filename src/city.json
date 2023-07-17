@@ -1,23 +1,8 @@
 [
   {
-    "City Title": "Bukidnon",
-    "City Description": "A province in the Philippines that captivates visitors with its breathtaking landscapes, vibrant culture, and abundant agricultural bounty.",
-    "City Image": "/Images/kampojuan-bukidnon1.jpg"
-  },
-  {
     "City Title": "Camiguin",
     "City Description": "A small island that enchants visitors with its natural wonders including volcanoes, waterfalls, hot springs, and pristine beaches.",
     "City Image": "/Images/camiguin_white_island3.jpg"
-  },
-  {
-    "City Title": "Dapitan",
-    "City Description": "A historic coastal town renowed for its association with national hero Dr. Jose Rizal and offers a blend of cultural heritage, scenic beauty and educational attractions.",
-    "City Image": "/Images/Zampen_dakak1.jpg"
-  },
-  {
-    "City Title": "Siargao",
-    "City Description": "A tropical paradise that lures travelers with its world-class surf breaks, stunning white sand beaches, and laid-back island vibes.",
-    "City Image": "/Images/siargao_rock_pool1.jpg"
   },
   {
     "City Title": "Surigao",
@@ -28,5 +13,20 @@
     "City Title": "Davao",
     "City Description": "A vibrant city that blends modernity with natural wonders, offering visitors a rich cultural experience and access to nearby attractions.",
     "City Image": "/Images/davao_samal_island2.jpg"
+  },
+  {
+    "City Title": "Bukidnon",
+    "City Description": "A province in the Philippines that captivates visitors with its breathtaking landscapes, vibrant culture, and abundant agricultural bounty.",
+    "City Image": "/Images/kampojuan-bukidnon1.jpg"
+  },
+  {
+    "City Title": "Siargao",
+    "City Description": "A tropical paradise that lures travelers with its world-class surf breaks, stunning white sand beaches, and laid-back island vibes.",
+    "City Image": "/Images/siargao_rock_pool1.jpg"
+  },
+  {
+    "City Title": "Dapitan",
+    "City Description": "A historic coastal town renowed for its association with national hero Dr. Jose Rizal and offers a blend of cultural heritage, scenic beauty and educational attractions.",
+    "City Image": "/Images/Zampen_dakak1.jpg"
   }
 ]

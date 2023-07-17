@@ -1,0 +1,44 @@
+.admin-page {
+  padding: 20px;
+}
+
+.admin-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+}
+
+.admin-title {
+  font-size: 24px;
+  margin: 0;
+}
+
+.booking-table {
+  margin-top: 20px;
+}
+
+.booking-table th {
+  background-color: #333;
+  color: white;
+}
+
+.booking-table td,
+.booking-table th {
+  text-align: center;
+  vertical-align: middle !important;
+}
+
+.booking-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.booking-table tbody tr:hover {
+  background-color: #ebebeb;
+}
+
+.booking-table button {
+  margin-right: 5px;
+}

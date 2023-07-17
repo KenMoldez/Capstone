@@ -1,12 +1,4 @@
-import {
-  Navbar,
-  Nav,
-  NavDropdown,
-  Container,
-  Form,
-  Offcanvas,
-  Button,
-} from "react-bootstrap";
+import { Navbar, Nav, Container, Offcanvas, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./NavBar.css";
 
@@ -18,9 +10,9 @@ const NavigationBar = () => {
           <Navbar
             key={expand}
             expand={expand}
-            className="bg-body-tertiary mb-3"
+            className="bg-body-tertiary mt-3 header"
           >
-            <Container fluid>
+            <Container>
               <Navbar.Brand>LAKBAY - TIKANG</Navbar.Brand>
               <Navbar.Toggle
                 aria-controls={`offcanvasNavbar-expand-${expand}`}
@@ -36,29 +28,31 @@ const NavigationBar = () => {
                   </Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
-                  <Nav className="justify-content-around flex-grow-1 pe-3">
+                  <Nav className="justify-content-end flex-grow-1 pe-3">
                     <Nav.Link>
-                      <Link className="link" to="/">
+                      <Link className="navbar-link" to="/">
                         Home
                       </Link>
                     </Nav.Link>
                     <Nav.Link>
-                      <Link className="link" to="/about">
+                      <Link className="navbar-link" to="/about">
                         About
                       </Link>
                     </Nav.Link>
                     <Nav.Link>
-                      <Link className="link" to="/destinations">
+                      <Link className="navbar-link" to="/destinations">
                         Destinations
                       </Link>
                     </Nav.Link>
                   </Nav>
                   <Nav>
-                    <Nav.Link>
-                      <Link className="link" to="/login">
-                        Login
-                      </Link>
-                    </Nav.Link>
+                    <Button>
+                      <Nav.Link>
+                        <Link className="header-btn-group" to="/login">
+                          Login
+                        </Link>
+                      </Nav.Link>
+                    </Button>
                   </Nav>
                 </Offcanvas.Body>
               </Navbar.Offcanvas>
