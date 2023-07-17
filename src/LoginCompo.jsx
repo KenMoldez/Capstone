@@ -7,8 +7,9 @@ import {
 } from "firebase/auth";
 import { auth, googleProvider } from "./config/firebase";
 import LoginCSS from "./Login.module.css";
+import { useEffect } from "react";
 
-export const LoginX = () => {
+export const LoginX = (props) => {
   const [activeTab, setActiveTab] = useState("login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -19,6 +20,13 @@ export const LoginX = () => {
   const [registerRepeatPassword, setRegisterRepeatPassword] = useState("");
   const [errmy, setErrmy] = useState("");
   const [errmz, setErrmz] = useState("");
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setCount((count) => count + 1);
+    }, 1000);
+  }, [count]);
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);
@@ -31,6 +39,7 @@ export const LoginX = () => {
       console.error(err);
       setErrmy("Invalid or used email");
     }
+    props.getBookings();
   };
 
   const signInWithGoogle = async () => {
@@ -39,6 +48,7 @@ export const LoginX = () => {
     } catch (err) {
       console.error(err);
     }
+    props.getBookings();
   };
 
   const signIn = async () => {
@@ -48,12 +58,19 @@ export const LoginX = () => {
       console.error(err);
       setErrmz("Not logged in or invalid password");
     }
+    props.getBookings();
   };
 
   return (
     <div className={`${LoginCSS["form-bg"]}`}>
       {auth.currentUser ? (
-        <Button variant="primary" onClick={() => auth.signOut()}>
+        <Button
+          variant="primary"
+          onClick={() => {
+            auth.signOut();
+            props.getBookings();
+          }}
+        >
           Logout
         </Button>
       ) : (

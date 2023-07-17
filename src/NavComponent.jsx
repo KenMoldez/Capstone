@@ -1,8 +1,18 @@
 import { Navbar, Nav, Container, Offcanvas, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import NavCSS from "./NavBar.css";
-
+import { auth } from "./config/firebase";
+import { useState } from "react";
+import { useEffect } from "react";
 const NavigationBar = () => {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setCount((count) => count + 1);
+    }, 1000);
+  }, [count]);
+
   return (
     <div className={`${NavCSS["Navbar"]}`}>
       <nav>
@@ -57,7 +67,7 @@ const NavigationBar = () => {
                     <Button>
                       <Nav.Link>
                         <Link id={`${NavCSS["header btn-group"]}`} to="/login">
-                          Login
+                          {auth.currentUser ? auth.currentUser.email : "login"}
                         </Link>
                       </Nav.Link>
                     </Button>

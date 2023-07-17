@@ -1,16 +1,61 @@
 import { useState } from "react";
 import "./Booking.css";
 import { Link, useParams } from "react-router-dom";
-import { auth } from "./config/firebase";
+import { auth, db } from "./config/firebase";
+import { addDoc, collection } from "firebase/firestore";
+import { Form } from "react-bootstrap";
 
 const Booking = () => {
   const { id } = useParams();
   const destinationx = require("./destinations.json");
   const desx = destinationx.find((des) => des.Location == id);
+  const now = new Date().toISOString().split("T")[0];
   const [billout, setBillout] = useState(desx.Price1);
+  const [sdate, setSdate] = useState(now);
+  const [card, setCard] = useState("");
+  const [month, setMonth] = useState("");
+  const [year, setYear] = useState("");
+  const [cvv, setCVV] = useState("");
+  const [name, setName] = useState("");
+  const [nat, setNat] = useState("");
+  const [prov, setProv] = useState("");
+  const bookingsCollectionRef = collection(db, "bookings");
+  const [spin, setSpin] = useState("");
   const billchange = (event) => {
     setBillout(event.target.value);
   };
+  const pay = async () => {
+    setSpin(" ");
+    if (
+      card.length == 16 &&
+      month &&
+      year >= 23 &&
+      cvv &&
+      name &&
+      nat &&
+      prov &&
+      sdate
+    ) {
+      let x = card.slice(11, 15);
+      let y = new Date();
+
+      await addDoc(bookingsCollectionRef, {
+        dateplaced: y,
+        location: id,
+        name: name,
+        date: sdate,
+        billout: billout,
+        digits: x,
+        email: auth?.currentUser?.email,
+        userId: auth?.currentUser?.uid,
+        status: "pending",
+      });
+    } else {
+      alert("qwe");
+    }
+    setSpin("");
+  };
+
   return (
     <div className="booking">
       <div className="container d-lg-flex">
@@ -173,7 +218,13 @@ const Booking = () => {
               </div>
               <div className="my-3 cardname">
                 <p className="dis fw-bold mb-2">Travel Date</p>
-                <input className="form-control" type="date" />
+                <Form.Control
+                  className="form-control"
+                  type="date"
+                  value={sdate}
+                  onChange={(date) => setSdate(date.target.value)}
+                  min={now}
+                />
               </div>
               <div>
                 <p className="dis fw-bold mb-2">Card details</p>
@@ -183,24 +234,40 @@ const Booking = () => {
                     type="text"
                     className="form-control"
                     placeholder="Card Details"
+                    maxlength={16}
+                    onChange={(e) => setCard(e.target.value)}
                   />
                   <div className="d-flex w-50">
                     <input
                       type="text"
                       className="form-control px-0"
-                      placeholder="MM/YY"
+                      placeholder="MM"
+                      maxlength={2}
+                      onChange={(e) => setMonth(e.target.value)}
+                    />
+                    <input
+                      type="text"
+                      className="form-control px-0"
+                      placeholder="YY"
+                      maxlength={2}
+                      onChange={(e) => setYear(e.target.value)}
                     />
                     <input
                       type="password"
                       maxlength="3"
                       className="form-control px-0"
                       placeholder="CVV"
+                      onChange={(e) => setCVV(e.target.value)}
                     />
                   </div>
                 </div>
                 <div className="my-3 cardname">
                   <p className="dis fw-bold mb-2">Cardholder name</p>
-                  <input className="form-control" type="text" />
+                  <input
+                    className="form-control"
+                    type="text"
+                    onChange={(e) => setName(e.target.value)}
+                  />
                 </div>
 
                 <div className="address">
@@ -208,6 +275,7 @@ const Booking = () => {
                   <select
                     className="form-select"
                     aria-label="Default select example"
+                    onChange={(e) => setNat(e.target.value)}
                   >
                     <option selected hidden>
                       Select Country
@@ -225,6 +293,7 @@ const Booking = () => {
                       className="form-control state"
                       type="text"
                       placeholder="Province"
+                      onChange={(e) => setProv(e.target.value)}
                     />
                   </div>
 
@@ -247,9 +316,17 @@ const Booking = () => {
                         </p>
                       </p>
                     </div>
-                    <div className="btn btn-primary mt-2">
-                      Pay ₱{Number(billout.replace(/[^0-9\.-]+/g, "")) * 1.2}
-                    </div>
+                    {spin ? (
+                      <>
+                        <div className="btn btn-primary mt-2" disabled="true">
+                          Loading
+                        </div>
+                      </>
+                    ) : (
+                      <div className="btn btn-primary mt-2" onClick={pay}>
+                        Pay ₱{Number(billout.replace(/[^0-9\.-]+/g, "")) * 1.2}
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>

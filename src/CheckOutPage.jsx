@@ -2,29 +2,8 @@ import React from "react";
 import { Table } from "react-bootstrap";
 import "./CheckoutPage.css"; // Import the CSS file for styling
 
-export const CheckoutPage = () => {
-  // Example travel booking details
-  const bookingDetails = [
-    {
-      id: 1,
-      name: "John Doe",
-      destination: "At Krasty Karbs",
-      date: "2023-08-20",
-      totalPrice: 1200,
-      currency: "USD",
-      status: "Success",
-    },
-    {
-      id: 2,
-      name: "Jane Smith",
-      destination: "At Krasty Karbs",
-      date: "2023-09-10",
-      totalPrice: 1800,
-      currency: "USD",
-      status: "Pending",
-    },
-    // Add more booked destinations as needed
-  ];
+export const CheckoutPage = (props) => {
+  const bookingDetails = [...props.books];
 
   return (
     <div className="checkout-page">
@@ -43,11 +22,13 @@ export const CheckoutPage = () => {
           {bookingDetails.map((booking) => (
             <tr key={booking.id}>
               <td>{booking.name}</td>
-              <td>{booking.destination}</td>
+              <td>{booking.location}</td>
               <td>{booking.date}</td>
+              <td>{booking.dateplaced.toDate().toString()}</td>
               <td>
-                {booking.totalPrice} {booking.currency}
+                {booking.totalPrice} {booking.billout}
               </td>
+              <td></td>
               <td>{booking.status}</td>
             </tr>
           ))}
