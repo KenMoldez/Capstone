@@ -16,10 +16,7 @@ const Booking = () => {
       <div className="container d-lg-flex">
         <div className="box-1 bg-light user">
           <div className="box-inner-1 pb-3 mb-3">
-            <div className="d-flex justify-content-between mb-3 userdetails">
-              <p className="fw-bold">Final Step: Enjoy Your Destination!</p>
-            </div>
-            <div className="d-flex justify-content-between mb-3 userdetails">
+            <div className="d-flex justify-content-center mb-3 mt-5 userdetails">
               <p className="fw-bold">{id}</p>
             </div>
             <div
@@ -156,7 +153,7 @@ const Booking = () => {
             </div>
           </div>
         </div>
-        <div className="box-2">
+        <div className="box-2 mt-4">
           <div className="box-inner-2">
             <div>
               <p className="fw-bold">Payment Details</p>
@@ -173,6 +170,10 @@ const Booking = () => {
                   value={auth.currentUser.email}
                   disabled
                 />
+              </div>
+              <div className="my-3 cardname">
+                <p className="dis fw-bold mb-2">Travel Date</p>
+                <input className="form-control" type="date" />
               </div>
               <div>
                 <p className="dis fw-bold mb-2">Card details</p>
@@ -201,6 +202,7 @@ const Booking = () => {
                   <p className="dis fw-bold mb-2">Cardholder name</p>
                   <input className="form-control" type="text" />
                 </div>
+
                 <div className="address">
                   <p className="dis fw-bold mb-3">Billing address</p>
                   <select
@@ -208,11 +210,10 @@ const Booking = () => {
                     aria-label="Default select example"
                   >
                     <option selected hidden>
-                      United States
+                      Select Country
                     </option>
-                    <option value="1">India</option>
-                    <option value="2">Australia</option>
-                    <option value="3">Canada</option>
+                    <option value="1">Philippines</option>
+                    <option value="2">Other..</option>
                   </select>
                   <div className="d-flex">
                     <input
@@ -223,21 +224,11 @@ const Booking = () => {
                     <input
                       className="form-control state"
                       type="text"
-                      placeholder="State"
+                      placeholder="Province"
                     />
                   </div>
-                  <div className="my-3">
-                    <p className="dis fw-bold mb-2">VAT Number</p>
-                    <div className="inputWithcheck">
-                      <input
-                        className="form-control"
-                        type="text"
-                        value="GB012345B9"
-                      />
-                      <span className="fas fa-check"></span>
-                    </div>
-                  </div>
-                  <div className="d-flex flex-column dis">
+
+                  <div className="d-flex flex-column dis mt-5">
                     <div className="d-flex align-items-center justify-content-between mb-2">
                       <p>Subtotal</p>
                       <p>₱{Number(billout.replace(/[^0-9\.-]+/g, ""))}</p>

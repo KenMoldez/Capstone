@@ -1,27 +1,32 @@
-import { useState, useEffect } from "react";
-import { Button, Card, Form } from "react-bootstrap";
+import { useState } from "react";
+import { Button, Card, Form, Nav } from "react-bootstrap";
 import {
   createUserWithEmailAndPassword,
   signInWithPopup,
   signInWithEmailAndPassword,
-  signOut,
 } from "firebase/auth";
 import { auth, googleProvider } from "./config/firebase";
-import "./Login.module.css"; // Import the CSS file for LoginX
+import LoginCSS from "./Login.module.css";
 
 export const LoginX = () => {
+  const [activeTab, setActiveTab] = useState("login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [emailz, setEmailz] = useState("");
-  const [passwordz, setPasswordz] = useState("");
-  const [count, setCount] = useState(0);
+  const [registerName, setRegisterName] = useState("");
+  const [registerUsername, setRegisterUsername] = useState("");
+  const [registerEmail, setRegisterEmail] = useState("");
+  const [registerPassword, setRegisterPassword] = useState("");
+  const [registerRepeatPassword, setRegisterRepeatPassword] = useState("");
   const [errmy, setErrmy] = useState("");
   const [errmz, setErrmz] = useState("");
+
+  const handleTabChange = (tab) => {
+    setActiveTab(tab);
+  };
 
   const createAccount = async () => {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      setCount(count + 1);
     } catch (err) {
       console.error(err);
       setErrmy("Invalid or used email");
@@ -31,7 +36,6 @@ export const LoginX = () => {
   const signInWithGoogle = async () => {
     try {
       await signInWithPopup(auth, googleProvider);
-      setCount(count + 1);
     } catch (err) {
       console.error(err);
     }
@@ -39,105 +43,193 @@ export const LoginX = () => {
 
   const signIn = async () => {
     try {
-      await signInWithEmailAndPassword(auth, emailz, passwordz);
-      setCount(count + 1);
+      await signInWithEmailAndPassword(auth, email, password);
     } catch (err) {
       console.error(err);
       setErrmz("Not logged in or invalid password");
     }
   };
 
-  const logout = async () => {
-    try {
-      await signOut(auth);
-      setCount(count + 1);
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  useEffect(() => {
-    setTimeout(() => {
-      setCount((count) => count + 1);
-    }, 1000);
-  }, [count]);
-
   return (
-    <div className="form-bg">
+    <div className={`${LoginCSS["form-bg"]}`}>
       {auth.currentUser ? (
-        <Button variant="primary" onClick={logout}>
+        <Button variant="primary" onClick={() => auth.signOut()}>
           Logout
         </Button>
       ) : (
-        <div className="container">
-          <Card>
-            <div className="form-container">
-              <div className="left-content">
-                <h3 className="title">Site Name</h3>
-                <h4 className="sub-title">Lorem ipsum dolor sit amet.</h4>
-              </div>
-              <div className="right-content">
-                <h3 className="form-title">Login</h3>
+        <div className={`${LoginCSS["container"]}`}>
+          <Card className={`${LoginCSS["card"]}`}>
+            <Nav
+              variant="pills"
+              className={`${LoginCSS["nav-justified mb-3"]}`}
+            >
+              <Nav.Item>
+                <Nav.Link
+                  eventKey="login"
+                  active={activeTab === "login"}
+                  onClick={() => handleTabChange("login")}
+                  className={`${LoginCSS["llogin"]}`} // Add class to the "Login" button
+                >
+                  Login
+                </Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link
+                  eventKey="register"
+                  active={activeTab === "register"}
+                  onClick={() => handleTabChange("register")}
+                  className={`${LoginCSS["rregister"]}`} // Add class to the "Sign Up" button
+                >
+                  Register
+                </Nav.Link>
+              </Nav.Item>
+            </Nav>
+            <div className="tab-content">
+              <div
+                className={`tab-pane fade show ${
+                  activeTab === "login" ? "active" : ""
+                }`}
+              >
                 <Form>
-                  <Form.Group className="mb-3" controlId="email">
+                  <div className={`${LoginCSS["text-center mb-3"]}`}>
+                    <p>Sign in with:</p>
+                    <Button
+                      type="button"
+                      variant="pills"
+                      className={`${LoginCSS["btn-floating md-1"]}`}
+                      onClick={signInWithGoogle}
+                    >
+                      Sign in with Google
+                    </Button>
+                  </div>
+                  <p className={`${LoginCSS["text-center"]}`}>or:</p>
+                  <Form.Group controlId="loginName">
+                    <Form.Label>Email or username</Form.Label>
                     <Form.Control
                       type="email"
                       placeholder="Email..."
+                      value={email}
                       onChange={(e) => setEmail(e.target.value)}
                     />
                   </Form.Group>
-                  <Form.Group className="mb-3" controlId="password">
+                  <Form.Group controlId="loginPassword">
+                    <Form.Label>Password</Form.Label>
                     <Form.Control
                       type="password"
                       placeholder="Password..."
+                      value={password}
                       onChange={(e) => setPassword(e.target.value)}
                     />
                   </Form.Group>
-                  <Button variant="primary" onClick={createAccount}>
-                    Create Account
+                  <Form.Group
+                    className={`${LoginCSS[" mb-4"]}`}
+                    controlId="loginCheck"
+                  >
+                    <Form.Check type="checkbox" label="Remember me" checked />
+                    <a href="#!" className="ms-4">
+                      Forgot password?
+                    </a>
+                  </Form.Group>
+                  <Button
+                    type="submit"
+                    variant="pills"
+                    className={`${LoginCSS["mb-4"]}`}
+                    onClick={signIn}
+                  >
+                    Sign in
                   </Button>
-                  <div className="error-message">{errmy}</div>
+                  <div className={`${LoginCSS["text-center"]}`}>
+                    <p>
+                      Not a member? <a href="#!">Register</a>
+                    </p>
+                  </div>
                 </Form>
               </div>
-            </div>
-          </Card>
-          <Card>
-            <div className="form-container">
-              <div className="left-content">
-                <h3 className="title">Site Name</h3>
-                <h4 className="sub-title">Lorem ipsum dolor sit amet.</h4>
-              </div>
-              <div className="right-content">
-                <h3 className="form-title">Login</h3>
+              <div
+                className={`tab-pane fade show ${
+                  activeTab === "register" ? "active" : ""
+                }`}
+              >
                 <Form>
-                  <Form.Group className="mb-3" controlId="emailz">
+                  <div className={`${LoginCSS["text-center mb-3"]}`}>
+                    <p>Sign up with:</p>
+                    <Button
+                      type="button"
+                      variant="pills"
+                      className={`${LoginCSS["btn-floating md-1"]}`}
+                      onClick={signInWithGoogle}
+                    >
+                      Sign in with Google
+                    </Button>
+                  </div>
+                  <p className={`${LoginCSS["text-center"]}`}>or:</p>
+                  <Form.Group controlId="registerName">
+                    <Form.Label>Name</Form.Label>
+                    <Form.Control
+                      type="text"
+                      placeholder="Name..."
+                      value={registerName}
+                      onChange={(e) => setRegisterName(e.target.value)}
+                    />
+                  </Form.Group>
+                  <Form.Group controlId="registerUsername">
+                    <Form.Label>Username</Form.Label>
+                    <Form.Control
+                      type="text"
+                      placeholder="Username..."
+                      value={registerUsername}
+                      onChange={(e) => setRegisterUsername(e.target.value)}
+                    />
+                  </Form.Group>
+                  <Form.Group controlId="registerEmail">
+                    <Form.Label>Email</Form.Label>
                     <Form.Control
                       type="email"
                       placeholder="Email..."
-                      onChange={(e) => setEmailz(e.target.value)}
+                      value={registerEmail}
+                      onChange={(e) => setRegisterEmail(e.target.value)}
                     />
                   </Form.Group>
-                  <Form.Group className="mb-3" controlId="passwordz">
+                  <Form.Group controlId="registerPassword">
+                    <Form.Label>Password</Form.Label>
                     <Form.Control
                       type="password"
                       placeholder="Password..."
-                      onChange={(e) => setPasswordz(e.target.value)}
+                      value={registerPassword}
+                      onChange={(e) => setRegisterPassword(e.target.value)}
                     />
                   </Form.Group>
-                  <Button variant="primary" onClick={signIn}>
-                    Sign In
+                  <Form.Group controlId="registerRepeatPassword">
+                    <Form.Label>Repeat password</Form.Label>
+                    <Form.Control
+                      type="password"
+                      placeholder="Repeat password..."
+                      value={registerRepeatPassword}
+                      onChange={(e) =>
+                        setRegisterRepeatPassword(e.target.value)
+                      }
+                    />
+                  </Form.Group>
+                  <Form.Group
+                    className={`${LoginCSS[" mb-4"]}`}
+                    controlId="registerCheck"
+                  >
+                    <Form.Check
+                      type="checkbox"
+                      label="I have read and agree to the terms"
+                      checked
+                    />
+                  </Form.Group>
+                  <Button
+                    type="submit"
+                    variant="pills"
+                    className={`${LoginCSS[" mb-3"]}`}
+                    onClick={createAccount}
+                  >
+                    Sign up
                   </Button>
-                  <div className="error-message">{errmz}</div>
                 </Form>
               </div>
-            </div>
-          </Card>
-          <Card>
-            <div className="form-container">
-              <h3 className="form-title">Login</h3>
-              <Button variant="primary" onClick={signInWithGoogle}>
-                Sign In With Google
-              </Button>
             </div>
           </Card>
         </div>

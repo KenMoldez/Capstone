@@ -25,14 +25,14 @@ const LandingPage = () => {
           </p>
 
           <Row className="justify-content-center">
-            <Col xs={6} sm={3} md={3} lg={3} xl={3} className="mb-2">
+            <Col lg={3} className="mb-2">
               <Link className="link" to={"/destinations/"}>
                 <Button variant="primary" size="lg" block>
                   destinations
                 </Button>
               </Link>
             </Col>
-            <Col xs={6} sm={3} md={3} lg={3} xl={3} className="mb-2">
+            <Col lg={3} className="mb-2">
               <Link
                 className="link"
                 to={auth.currentUser ? "/booking/" : "/login"}

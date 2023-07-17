@@ -1,47 +1,30 @@
-:root {
-  --united-nations-blue: hsl(214, 56%, 58%);
-  --bright-navy-blue: darkblue;
-  --spanish-gray: hsl(0, 0%, 60%);
-  --black-coral: hsl(225, 8%, 42%);
-  --oxford-blue: hsl(208, 97%, 12%);
-  --yale-blue: hsl(214, 72%, 33%);
-  --blue-ncs: hsl(197, 100%, 36%);
-  --gunmetal: hsl(206, 34%, 20%);
-  --gainsboro: hsl(0, 0%, 88%);
-  --cultured: hsl(0, 0%, 98%);
-  --white: hsl(0, 0%, 100%);
-  --black: hsl(0, 0%, 0%);
-  --onyx: hsl(0, 0%, 25%);
-  --jet: hsl(0, 0%, 20%);
-}
-
 .btn {
-  color: var(--white);
   text-transform: uppercase;
   font-size: var(--fs-4);
   border-radius: 100px;
   padding: 12px 24px;
-  border: 2px solid transparent;
   transition: var(--transition);
+  align-items: center;
+  justify-content: center;
 }
 
 .btn-primary {
-  border-color: var(--bright-navy-blue);
-  background-color: var(--bright-navy-blue);
+  border-color: hsl(197, 100%, 36%);
+  background-color: hsl(197, 100%, 36%);
 }
 
 .btn-primary:is(:hover, :focus) {
   opacity: 1;
-  color: var(--bright-navy-blue);
+  color: black;
 }
 
 .btn-secondary {
-  border-color: var(--white);
+  border-color: white;
 }
 
 .btn-secondary:is(:hover, :focus) {
   opacity: 1;
-  color: var(--bright-navy-blue);
+  color: hsl(197, 100%, 36%);
 }
 
 .h1,
@@ -53,7 +36,7 @@
 }
 
 .section-subtitle {
-  color: var(--bright-navy-blue);
+  color: hsl(197, 100%, 36%);
   font-size: var(--fs-5);
   text-transform: uppercase;
   font-family: var(--ff-montserrat);
@@ -61,7 +44,7 @@
 }
 
 .section-text {
-  color: var(--black-coral);
+  color: hsl(225, 8%, 42%);
   margin-bottom: 30px;
 }
 
@@ -74,11 +57,11 @@
 
 .hero-title {
   margin-bottom: 20px;
-  color: var(--black);
+  color: black;
 }
 
 .hero-text {
-  color: var(--black);
+  color: black;
   font-size: var(--fs-3);
   margin-bottom: 40px;
 }

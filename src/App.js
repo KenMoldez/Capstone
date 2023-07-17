@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
@@ -8,13 +7,11 @@ import { Route, Routes } from "react-router-dom";
 import NavigationBar from "./NavComponent";
 import LandingPage from "./Home";
 import AboutPage from "./About";
-import Login from "./Login";
 import { LoginX } from "./LoginCompo";
-import { Movie } from "./Movie";
 import DestinationPage from "./Destination";
-import TEST from "./TEST";
 import Booking from "./Booking";
 import CityDestination from "./CityDestination";
+import { CheckoutPage } from "./CheckOutPage";
 function App() {
   return (
     <div className="App">
@@ -33,6 +30,7 @@ function App() {
             </>
           }
         />
+        <Route exact path="/booked" element={<CheckoutPage />} />
         <Route exact path="/destinations/" element={<DestinationPage />} />
         <Route path="/destinations/:id" element={<CityDestination />} />
 
