@@ -5,7 +5,7 @@ import { auth, db } from "./config/firebase";
 import { addDoc, collection } from "firebase/firestore";
 import { Form } from "react-bootstrap";
 
-const Booking = () => {
+const Booking = (props) => {
   const { id } = useParams();
   const destinationx = require("./destinations.json");
   const desx = destinationx.find((des) => des.Location == id);
@@ -50,9 +50,12 @@ const Booking = () => {
         userId: auth?.currentUser?.uid,
         status: "pending",
       });
+      await props.getBookings();
+      alert("pull modal");
     } else {
-      alert("qwe");
+      alert("error");
     }
+
     setSpin("");
   };
 
