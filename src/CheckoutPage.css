@@ -1,36 +1,15 @@
-.checkout-page {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #f8f9fa;
+/* CheckoutPage.css */
+.table-container {
+  overflow-y: auto; /* Enable vertical scrolling */
+  max-height: 400px; /* Set a maximum height for the table container */
 }
 
-h2 {
-  margin-bottom: 2rem;
+.table-wrapper {
+  position: relative; /* Required for sticky positioning */
 }
 
-table {
-  width: 80%;
-  max-width: 800px;
-}
-
-th,
-td {
-  padding: 0.5rem;
-  text-align: center;
-}
-
-th {
-  background-color: #f8f9fa;
-  font-weight: bold;
-}
-
-tr:nth-child(even) {
-  background-color: #f0f0f0;
-}
-
-tr:hover {
-  background-color: #ebebeb;
+thead th {
+  position: sticky;
+  top: 0;
+  background-color: #f8f9fa; /* Replace with your desired background color */
 }

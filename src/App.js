@@ -36,7 +36,7 @@ function App() {
       if (auth.currentUser) {
         alert("cannot connect to firebase servers");
       }
-      setBooks({});
+      setBooks([]);
       console.error(err);
     }
   };
