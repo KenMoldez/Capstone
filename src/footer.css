@@ -1,0 +1,140 @@
+#footer-top {
+  background: white;
+  padding-block: 30px;
+  color: black;
+}
+
+#footer-brand {
+  margin-bottom: 30px;
+}
+
+.image1,
+.image2,
+.image3,
+.image4 {
+  width: 150px;
+}
+
+.image2 {
+  background-color: white !important;
+}
+
+#footer-brand #logo {
+  margin-bottom: 20px;
+}
+
+#footer-text {
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+#footer-contact {
+  margin-bottom: 30px;
+}
+
+#contact-title {
+  position: relative;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  margin-bottom: 30px;
+}
+
+#contact-title::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 50px;
+  height: 2px;
+  background: black;
+}
+
+#contact-text {
+  font-size: 18px;
+  margin-bottom: 15px;
+  max-width: 200px;
+}
+
+#contact-item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+#contact-item ion-icon {
+  --ionicon-stroke-width: 40px;
+}
+
+#contact-link,
+address {
+  font-style: normal;
+  font-size: 18px;
+}
+
+#contact-link:hover,
+#contact-link:focus {
+  color: #fff;
+}
+
+#form-text {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+#footer-form #input-field {
+  background: #fff;
+  font-size: 18px;
+  padding: 15px 20px;
+  border-radius: 100px;
+  margin-bottom: 10px;
+}
+
+#footer-form #buttonn {
+  width: 100%;
+}
+
+#footer-bottom {
+  background: #303030;
+  padding-block: 20px;
+  text-align: center;
+}
+
+#footer-bottom #copyright {
+  color: #dcdcdc !important;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+#footer-bottom #copyright a {
+  color: white !important;
+  display: inline-block;
+}
+
+#footer-bottom #footer-bottom-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 21px;
+}
+
+#footer-bottom #footer-bottom-list > li {
+  position: relative;
+}
+
+#footer-bottom #footer-bottom-list > li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  right: -10px;
+  bottom: 3px;
+  width: 1px;
+  background: hsla(0, 0%, 100%, 0.2);
+}
+
+#footer-bottom #footer-bottom-link {
+  color: #dcdcdc !important;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}

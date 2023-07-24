@@ -1,15 +1,14 @@
-/* CheckoutPage.css */
 .table-container {
-  overflow-y: auto; /* Enable vertical scrolling */
-  max-height: 400px; /* Set a maximum height for the table container */
+  overflow-y: auto;
+  max-height: 400px;
 }
 
 .table-wrapper {
-  position: relative; /* Required for sticky positioning */
+  position: relative;
 }
 
 thead th {
   position: sticky;
   top: 0;
-  background-color: #f8f9fa; /* Replace with your desired background color */
+  background-color: #f8f9fa;
 }

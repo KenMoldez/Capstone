@@ -10,6 +10,12 @@
   max-width: 400px;
 }
 
+.text {
+  display: flex;
+  text-align: center !important;
+  justify-content: center;
+}
+
 .card {
   padding: 5rem;
   margin: 0 auto;

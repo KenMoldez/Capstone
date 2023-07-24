@@ -41,7 +41,9 @@ function DestinationPage() {
                     className="link"
                     to={"/destinations/" + city["City Title"]}
                   >
-                    <Button variant="primary">Check Destination</Button>
+                    <Button variant="primary" id="buttonn">
+                      Check Destination
+                    </Button>
                   </Link>
                 </Card.Body>
               </Card>{" "}

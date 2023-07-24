@@ -170,7 +170,9 @@ const Booking = (props) => {
                       <span className="fw-bold"> Promo 1 </span>
                       <span className="fas fa-peso-sign">{desx.Price1}</span>
                     </div>
-                    <span>2Days | 1Night | 3Adults | 2Children</span>
+                    <span>
+                      2Days | 1Night | 3Adults | 2Children | Hotel Included
+                    </span>
                   </div>
                 </div>
               </label>
@@ -182,7 +184,9 @@ const Booking = (props) => {
                       <span className="fw-bold"> Promo 2 </span>
                       <span className="fas fa-peso-sign">{desx.Price2}</span>
                     </div>
-                    <span>2Days | 1Night | 5Adults | 3Children</span>
+                    <span>
+                      2Days | 1Night | 5Adults | 3Children | Hotel Included
+                    </span>
                   </div>
                 </div>
               </label>
@@ -194,7 +198,9 @@ const Booking = (props) => {
                       <span className="fw-bold"> Promo 3 </span>
                       <span className="fas fa-peso-sign">{desx.Price3}</span>
                     </div>
-                    <span>2Days | 1Night | 8Adults | 5Children</span>
+                    <span>
+                      2Days | 1Night | 8Adults | 5Children | Hotel Included
+                    </span>
                   </div>
                 </div>
               </label>
@@ -326,7 +332,11 @@ const Booking = (props) => {
                         </div>
                       </>
                     ) : (
-                      <div className="btn btn-primary mt-2" onClick={pay}>
+                      <div
+                        className="btn btn-primary mt-2"
+                        id="buttonn | Hotel Included"
+                        onClick={pay}
+                      >
                         Pay ₱{Number(billout.replace(/[^0-9\.-]+/g, "")) * 1.2}
                       </div>
                     )}

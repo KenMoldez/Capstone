@@ -1,3 +1,25 @@
+.btn-primary {
+  border-color: white;
+  background-color: yellow;
+  border: 10;
+  color: black !important;
+}
+
+.btn-check:checked + .btn,
+.btn.active,
+.btn.show,
+.btn:first-child:active,
+:not(.btn-check) + .btn:active {
+  color: white;
+  background-color: transparent;
+  border-color: none;
+}
+
+#buttonn:hover {
+  color: white !important;
+  border-color: white;
+}
+
 .btn {
   text-transform: uppercase;
   font-size: var(--fs-4);
@@ -8,60 +30,43 @@
   justify-content: center;
 }
 
-.btn-primary {
-  border-color: hsl(197, 100%, 36%);
-  background-color: hsl(197, 100%, 36%);
-}
-
-.btn-primary:is(:hover, :focus) {
-  opacity: 1;
-  color: black;
-}
-
-.btn-secondary {
-  border-color: white;
-}
-
-.btn-secondary:is(:hover, :focus) {
-  opacity: 1;
-  color: hsl(197, 100%, 36%);
-}
-
 .h1,
 .h2,
 .h3 {
-  font-weight: var(--fw-800);
+  font-weight: 700;
   font-family: var(--ff-montserrat);
   text-transform: uppercase;
-}
-
-.section-subtitle {
-  color: hsl(197, 100%, 36%);
-  font-size: var(--fs-5);
-  text-transform: uppercase;
-  font-family: var(--ff-montserrat);
-  margin-bottom: 8px;
-}
-
-.section-text {
-  color: hsl(225, 8%, 42%);
-  margin-bottom: 30px;
+  font-size: 3rem;
 }
 
 .hero {
+  position: relative;
+  isolation: isolate;
   place-items: center;
   min-height: 600px;
   text-align: center;
   padding-top: 125px;
+  background-image: url("https://res.cloudinary.com/dgtupimcv/image/upload/v1690181166/wallpaperflare.com_wallpaper_cd19dp.jpg");
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  background-color: black;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.5;
 }
 
 .hero-title {
   margin-bottom: 20px;
-  color: black;
+  margin-top: 4rem;
+  color: white !important;
+  font-size: 6rem;
 }
 
 .hero-text {
-  color: black;
+  color: white !important;
   font-size: var(--fs-3);
   margin-bottom: 40px;
 }

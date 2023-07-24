@@ -48,8 +48,9 @@ function CityDestination() {
                 </Col>
                 <Col lg={4} className=" details">
                   <div className="card-details">
-                    <div>REVIEW COUNT: {des.Rating}</div>
-                    <div>{des.Price0}</div>
+                    <div>
+                      <h3>{des.Price0}</h3>
+                    </div>
                     <div>/Person</div>
                     <Link
                       className="link button"
@@ -57,7 +58,7 @@ function CityDestination() {
                         auth.currentUser ? "/booking/" + des.Location : "/login"
                       }
                     >
-                      <Button>BOOK NOW</Button>
+                      <Button id="buttonn">BOOK NOW</Button>
                     </Link>
                   </div>
                 </Col>

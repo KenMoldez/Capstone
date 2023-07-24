@@ -4,7 +4,7 @@ import "bootstrap/dist/js/bootstrap.min.js";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 import { Route, Routes } from "react-router-dom";
-import NavigationBar from "./NavComponent";
+import NavigationBar from "./Navbar";
 import LandingPage from "./Home";
 import AboutPage from "./About";
 import { LoginX } from "./LoginCompo";
@@ -16,6 +16,7 @@ import { useState } from "react";
 import { collection, getDoc, getDocs } from "firebase/firestore";
 import { auth, db } from "./config/firebase";
 import { useEffect } from "react";
+import Footer from "./footer";
 function App() {
   const [user, setUser] = useState(0);
   const dbRefbk = collection(db, "bookings");
@@ -48,7 +49,7 @@ function App() {
   return (
     <div className="App">
       {console.log(books)}
-      <NavigationBar />
+      <NavigationBar getBookings={getBookings} />
       {/* <TEST /> */}
       <Routes>
         <Route exact path="/" element={<LandingPage />} />
@@ -71,6 +72,7 @@ function App() {
           element={<Booking getBookings={getBookings} />}
         />
       </Routes>
+      <Footer />
     </div>
   );
 }
