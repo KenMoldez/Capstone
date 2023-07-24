@@ -3,7 +3,7 @@ import "./Booking.css";
 import { Link, useParams } from "react-router-dom";
 import { auth, db } from "./config/firebase";
 import { addDoc, collection } from "firebase/firestore";
-import { Form } from "react-bootstrap";
+import { Form, Modal, Button } from "react-bootstrap";
 
 const Booking = (props) => {
   const { id } = useParams();
@@ -24,8 +24,34 @@ const Booking = (props) => {
   const billchange = (event) => {
     setBillout(event.target.value);
   };
+
+  const [showModal, setShowModal] = useState(false);
+  const [cardError, setCardError] = useState(false);
+  const [monthError, setMonthError] = useState(false);
+  const [yearError, setYearError] = useState(false);
+  const [cvvError, setCvvError] = useState(false);
+  const [nameError, setNameError] = useState(false);
+  const [natError, setNatError] = useState(false);
+  const [provError, setProvError] = useState(false);
+
+  const resetFormErrors = () => {
+    setCardError(false);
+    setMonthError(false);
+    setYearError(false);
+    setCvvError(false);
+    setNameError(false);
+    setNatError(false);
+    setProvError(false);
+  };
+
+  const handleModalClose = () => {
+    setShowModal(false);
+  };
+
   const pay = async () => {
     setSpin(" ");
+    resetFormErrors();
+
     if (
       card.length == 16 &&
       month &&
@@ -51,9 +77,30 @@ const Booking = (props) => {
         status: "pending",
       });
       await props.getBookings();
-      alert("pull modal");
+      setShowModal(true); // Show the modal after successful booking
     } else {
-      alert("error");
+      // Check each field and set error state if necessary
+      if (card.length !== 16) {
+        setCardError(true);
+      }
+      if (!month) {
+        setMonthError(true);
+      }
+      if (year < 23) {
+        setYearError(true);
+      }
+      if (!cvv) {
+        setCvvError(true);
+      }
+      if (!name) {
+        setNameError(true);
+      }
+      if (!nat) {
+        setNatError(true);
+      }
+      if (!prov) {
+        setProvError(true);
+      }
     }
 
     setSpin("");
@@ -346,6 +393,19 @@ const Booking = (props) => {
             </form>
           </div>
         </div>
+        <Modal show={showModal} onHide={handleModalClose} centered>
+          <Modal.Header closeButton>
+            <Modal.Title>BOOKING SECURE</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            Your booking is confirmed. Thank you for booking with us!
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="primary" onClick={handleModalClose}>
+              Close
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </div>
     </div>
   );
