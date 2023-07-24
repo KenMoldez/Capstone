@@ -36,7 +36,11 @@ export const LoginX = (props) => {
   const createAccount = async (e) => {
     e.preventDefault();
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
+      await createUserWithEmailAndPassword(
+        auth,
+        registerEmail,
+        registerPassword
+      );
     } catch (err) {
       console.error(err);
       setErrmy("Invalid or used email");
